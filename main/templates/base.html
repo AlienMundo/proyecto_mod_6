@@ -21,7 +21,7 @@
 
     <header>
       {% block header %}
-      <p>Este es el HEADER del template base</p>
+        {% include 'parts/header.html' %}
       {% endblock %}
     </header>
 
@@ -31,7 +31,6 @@
 
     <main>
       {% block content %}
-      <p>Este es el bloque CONTENT del template base</p>
       {% endblock %}
     </main>
 
