@@ -1,16 +1,41 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from main.flanes import flanes
 
 # Create your views here.
 
-def indice(req):
+def index(req):
     context = {'flanes': flanes}
-    return render(req, 'indice.html', context)
+    return render(req, 'index.html', context)
 
-def acerca(req):
-    context = {'titulo': 'Acerca de nosotros'}
-    return render(req, 'acerca.html', context)
+def about(req):
+    return render(req, 'about.html')
 
-def bienvenido(req):
-    return render(req, 'bienvenido.html')
+def welcome(req):
+    return render(req, 'welcome.html')
+
+def contact_form(req):
+    customer_name = req.POST['customer_name']
+    customer_email = req.POST['customer_email']
+    message = req.POST['message']
+
+    errores = []
+
+    if "@" in customer_email and len(customer_name) <= 64:
+        return redirect('/success')
+    else:
+        errores.append('Error en el envio')
+        context = {'errores': errores}
+        return render(req, 'welcome.html', context)
+    
+    # ahora tengo que validar  que 'customer_email' tenga al menos 1 arroba y que 'customer_name' sea de largo maximo 64 caracteres
+
+    # Si se pilla algun error se agrega a errores, si len(errores) == 0: redirigimos a pagina de exito
+    # Si len(errores) > 0: vuelvo a cargar 'welcome.html', pero ahora mostrando los errores
+
+
+def success(req):
+    return render(req, 'success.html')
+
+def failure(req):
+    return render(req, 'failure.html')

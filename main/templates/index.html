@@ -2,28 +2,28 @@
 
 {% block content %}
   <div class="container my-3">
-    <h3 class="text-center text-primary">
+    <h3 class="text-center text-dark">
       Lista de Productos
     </h3>
     <div class="row">
-      
+
 
       {% for flan in flanes %}
-        <div class="col-3">
+        <div class="col-12 col-md-3 my-4">
             <div class="card">
-              <img src="{{flan.imagen_url}}" class="card-img-top" alt="...">
+              <img src="{{flan.imagen_url}}" class="card-img-top" alt="{{flan.nombre}}">
               <div class="card-body">
-                <h5 class="card-title">
+                <h5 class="card-title fw-bold">
                   {{flan.nombre}}
                 </h5>
                 <p class="card-text">{{flan.descripcion}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{flan.precio}}</li>
+                <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link">Pedir</a>
-                <a href="#" class="card-link">Comprar</a>
+                <a href="#" class="card-link link-underline link-underline-opacity-0">Pedir</a>
+                <a href="#" class="card-link link-underline link-underline-opacity-0">Comprar</a>
               </div>
             </div>
         </div>
