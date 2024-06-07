@@ -28,8 +28,8 @@ def welcome(req):
         form = ContactForm(req.POST)
         if form.is_valid():
             return redirect('/success')
-        context = {'form':forms}
-        return render(req, 'welcome.html')
+        context = {'form':form}
+        return render(req, 'welcome.html', context)
 
 def contact_form(req):
     customer_name = req.POST['customer_name']
