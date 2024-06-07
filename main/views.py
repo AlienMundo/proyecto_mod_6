@@ -1,6 +1,8 @@
+from django import forms
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from main.flanes import flanes
+from main.forms import ContactForm
 
 # Create your views here.
 
@@ -11,8 +13,23 @@ def index(req):
 def about(req):
     return render(req, 'about.html')
 
+# def welcome(req):
+#     return render(req, 'welcome.html')
+
 def welcome(req):
-    return render(req, 'welcome.html')
+    if req.method == 'GET':
+        # Renderizamos la pagina
+        form = ContactForm()
+        context = {'form':form}
+        return render(req, 'welcome.html', context)
+
+    else:
+        # validamos el formulario
+        form = ContactForm(req.POST)
+        if form.is_valid():
+            return redirect('/success')
+        context = {'form':forms}
+        return render(req, 'welcome.html')
 
 def contact_form(req):
     customer_name = req.POST['customer_name']
@@ -24,7 +41,7 @@ def contact_form(req):
     if "@" in customer_email and len(customer_name) <= 64:
         return redirect('/success')
     else:
-        errores.append('Error en el envio')
+        errores.append('Error en el envio, formato no valido')
         context = {'errores': errores}
         return render(req, 'welcome.html', context)
     
