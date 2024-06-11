@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3 class="text-center my-5">Bienvenido Cliente</h3>
+  <div class="formulario my-5">
+    <!-- <form action="/contact_form" method="post">
+      {% csrf_token %}
+
+      <div class="mt-5">
+        <label for="exampleInputName" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Nombre" name="customer_name">
+      </div>
+
+      <div class="my-3">
+        <label for="exampleInputEmail" class="form-label">Correo electrónico</label>
+        <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo electrónico" name="customer_email">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Mensaje</label>
+        <input type="text" class="form-control input-mensaje caja-mensaje pb-5" id="exampleInputPassword1" placeholder="Escribe aquí tu mensaje" name="message">
+      </div>
+      {% for error in errores %}
+        <span class="badge text-bg-danger">{{error}}</span>
+      {% endfor %}
+      <div class="d-grid gap-2 d-md-flex justify-content-end">
+        <button type="submit" class="btn btn-info text-light px-4 py-2 ">Enviar</button>
+      </div>
+    </form> -->
+    <form id="form_cliente" action="/contact/" method="post">
+      {% csrf_token %}
+      {{form}}
+      <div class="d-grid gap-2 d-md-flex justify-content-end">
+        <button type="submit" class="btn btn-info text-light px-4 py-2 mt-3">Enviar</button>
+      </div>
+    </form>
+  </div>
+
+
+{% endblock %}

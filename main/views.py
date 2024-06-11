@@ -3,33 +3,41 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from main.flanes import flanes
 from main.forms import ContactForm
+from main.models import Cliente
 
 # Create your views here.
 
 def index(req):
+    # Debe mostrar todos los flanes de la base de datos
     context = {'flanes': flanes}
     return render(req, 'index.html', context)
 
 def about(req):
     return render(req, 'about.html')
 
-# def welcome(req):
-#     return render(req, 'welcome.html')
-
 def welcome(req):
+    # Debe mostrar solo los flanes privados de la base de datos
+    context = {'flanes': flanes}
+    return render(req, 'welcome.html', context)
+
+def contacto(req):
     if req.method == 'GET':
         # Renderizamos la pagina
         form = ContactForm()
         context = {'form':form}
-        return render(req, 'welcome.html', context)
+        return render(req, 'contacto.html', context)
 
     else:
         # validamos el formulario
         form = ContactForm(req.POST)
         if form.is_valid():
+            Cliente.objects.create(
+                # Esta es la forma de pedirle a un modelo que cree un registro usando los datos de un formulario
+                **form.cleaned_data
+            )
             return redirect('/success')
         context = {'form':form}
-        return render(req, 'welcome.html', context)
+        return render(req, 'contacto.html', context)
 
 def contact_form(req):
     customer_name = req.POST['customer_name']

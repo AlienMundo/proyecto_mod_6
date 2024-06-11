@@ -1,40 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h3 class="text-center my-5">Bienvenido Cliente</h3>
-  <div class="formulario my-5">
-    <!-- <form action="/contact_form" method="post">
-      {% csrf_token %}
+  <div class="container">
+    <h3 class="text-center text-dark my-5">
+      Lista de Productos Privados
+    </h3>
+    <div class="row">
 
-      <div class="mt-5">
-        <label for="exampleInputName" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Nombre" name="customer_name">
-      </div>
 
-      <div class="my-3">
-        <label for="exampleInputEmail" class="form-label">Correo electrónico</label>
-        <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo electrónico" name="customer_email">
-      </div>
-
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Mensaje</label>
-        <input type="text" class="form-control input-mensaje caja-mensaje pb-5" id="exampleInputPassword1" placeholder="Escribe aquí tu mensaje" name="message">
-      </div>
-      {% for error in errores %}
-        <span class="badge text-bg-danger">{{error}}</span>
+      {% for flan in flanes %}
+        <div class="col-12 col-md-6 my-4">
+            <div class="card">
+              <img src="{{flan.imagen_url}}" class="card-img-top" alt="{{flan.nombre}}">
+              <div class="card-body">
+                <h5 class="card-title fw-bold">
+                  {{flan.nombre}}
+                </h5>
+                <p class="card-text">{{flan.descripcion}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link link-underline link-underline-opacity-0">Pedir</a>
+                <a href="#" class="card-link link-underline link-underline-opacity-0">Comprar</a>
+              </div>
+            </div>
+        </div>
       {% endfor %}
-      <div class="d-grid gap-2 d-md-flex justify-content-end">
-        <button type="submit" class="btn btn-info text-light px-4 py-2 ">Enviar</button>
-      </div>
-    </form> -->
-    <form id="form_cliente" action="/bienvenido/" method="post">
-      {% csrf_token %}
-      {{form}}
-      <div class="d-grid gap-2 d-md-flex justify-content-end">
-        <button type="submit" class="btn btn-info text-light px-4 py-2 mt-3">Enviar</button>
-      </div>
-    </form>
+
+    </div>
   </div>
-
-
 {% endblock %}
+
