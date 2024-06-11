@@ -6,7 +6,9 @@
   color: #757BD0 !important;
 }
 
-
+.img_flanes{
+  max-height: 350px;
+}
 
 /** Formulario **/
 

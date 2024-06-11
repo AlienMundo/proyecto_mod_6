@@ -8,10 +8,10 @@
     <div class="row">
 
 
-      {% for flan in flanes %}
+      {% for flan in flanes_publicos %}
         <div class="col-12 col-md-6 my-4">
             <div class="card">
-              <img src="{{flan.imagen_url}}" class="card-img-top" alt="{{flan.nombre}}">
+              <img src="{{flan.imagen_url}}" class="card-img-top img_flanes" alt="{{flan.nombre}}">
               <div class="card-body">
                 <h5 class="card-title fw-bold">
                   {{flan.nombre}}

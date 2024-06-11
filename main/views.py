@@ -3,13 +3,16 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from main.flanes import flanes
 from main.forms import ContactForm
-from main.models import Cliente
+from main.models import Cliente, Flan
 
 # Create your views here.
 
 def index(req):
     # Debe mostrar todos los flanes de la base de datos
-    context = {'flanes': flanes}
+    flanes_publicos = Flan.objects.filter(is_private=False)
+    context = {
+        'flanes_publicos': flanes_publicos
+    }
     return render(req, 'index.html', context)
 
 def about(req):
@@ -17,10 +20,13 @@ def about(req):
 
 def welcome(req):
     # Debe mostrar solo los flanes privados de la base de datos
-    context = {'flanes': flanes}
+    flanes_privados = Flan.objects.filter(is_private=True)
+    context = {
+        'flanes_privados': flanes_privados
+    }
     return render(req, 'welcome.html', context)
 
-def contacto(req):
+def contact(req):
     if req.method == 'GET':
         # Renderizamos la pagina
         form = ContactForm()
