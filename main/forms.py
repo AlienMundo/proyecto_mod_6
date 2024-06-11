@@ -6,7 +6,7 @@ class ContactForm(forms.Form):
     label = 'Nombre',
     widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Nombre'}))
   customer_email = forms.EmailField(
-    max_length=15, 
+    max_length=40, 
     label='Correo Electrónico', 
     widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder': 'Correo Electrónico'})
     )

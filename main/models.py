@@ -4,7 +4,7 @@ import uuid
 # Create your models here.
 class Cliente(models.Model):
   customer_name = models.CharField(max_length=64)
-  customer_email = models.EmailField(max_length=15)
+  customer_email = models.EmailField(max_length=40)
   message = models.TextField(null=False)
 
 class Flan(models.Model):
