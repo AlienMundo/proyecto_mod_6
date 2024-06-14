@@ -2,9 +2,9 @@
 
 {% block content %}
 
-  <h3 class="text-center my-5">Login</h3>
+  <h3 class="text-center my-5">Register</h3>
 
-  <form class="my-5 form-login" action="{% url 'login' %}" method="post">
+  <form class="my-5 form-register" action="{% url 'register' %}" method="post">
 
     {% csrf_token %}
     {{form}}
@@ -20,11 +20,11 @@
     <div class="mb-3 form-check">
     </div> -->
     <div class="d-grid gap-2 d-md-flex justify-content-end">
-      <button type="submit" class="btn btn-info text-light px-4 py-2 mt-3">Login</button>
+      <button type="submit" class="btn btn-info text-light px-4 py-2 mt-3">Register</button>
     </div>
   </form>
 
-  <p class="text-center">Si no tienes cuenta <a href="/accounts/register">Crea una aquí.</a></p>
+  <p class="text-center">Si ya tienes cuenta <a href="/accounts/login">Accede aquí.</a></p>
 
   
 {% endblock %}

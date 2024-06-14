@@ -16,4 +16,19 @@ class ContactForm(forms.Form):
 
   )
 
-
+class RegisterForm(forms.Form):
+  username = forms.CharField(
+    max_length= 64,
+    label = 'Nombre',
+    widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Nombre'})
+  )
+  password = forms.CharField(
+    max_length= 16,
+    label = 'Contraseña',
+    widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder': 'Contraseña', })
+  )
+  password2 = forms.CharField(
+  max_length= 16,
+  label = 'Repetir Contraseña',
+  widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder': 'Repetir Contraseña', })
+)

@@ -37,10 +37,40 @@ nav a {
 }
 
 /** Formulario Login**/
+
 .form-login {
   width: 80%;
   margin: 1rem auto;
   padding: 0.2rem;
   text-align: center;
+}
+
+.form-login label {
+  display: block;
+  text-align: left;
 
 }
+
+.form-login input {
+  width: 100%;
+  padding: 10px;
+  border: #DEE2E6 solid 1px;
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  height: 2.3rem;
+}
+
+/** Formulario Registro **/
+
+.form-register {
+    width: 80%;
+    margin: 1rem auto;
+    padding: 0.2rem;
+    text-align: left;
+}
+
+.form-register input {
+  margin-bottom: 0.8rem;
+}
+
+

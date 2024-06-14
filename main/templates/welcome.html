@@ -8,7 +8,7 @@
     <div class="row">
 
 
-      {% for flan in flanes_privados %}
+      {% for flan in flanes %}
         <div class="col-12 col-md-6 my-4">
             <div class="card">
               <img src="{{flan.imagen_url}}" class="card-img-top img_flanes" alt="{{flan.nombre}}">
@@ -19,7 +19,8 @@
                 <p class="card-text">{{flan.descripcion}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}</li>
+                <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}
+                </li>
               </ul>
               <div class="card-body">
                 <a href="#" class="card-link link-underline link-underline-opacity-0">Pedir</a>

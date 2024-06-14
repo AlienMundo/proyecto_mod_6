@@ -2,12 +2,14 @@ from django import forms
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from main.flanes import flanes
-from main.forms import ContactForm
+from main.forms import ContactForm, RegisterForm
 from main.models import Cliente, Flan
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -25,9 +27,9 @@ def about(req):
 @login_required #Esto evita que puedan entrar a la pagina "welcome"sin haberse logeado antes
 def welcome(req):
     # Debe mostrar solo los flanes privados de la base de datos
-    flanes_privados = Flan.objects.filter(is_private=True)
+    flanes = Flan.objects.all()
     context = {
-        'flanes_privados': flanes_privados
+        'flanes': flanes
     }
     return render(req, 'welcome.html', context)
 
@@ -80,6 +82,8 @@ def failure(req):
 class LoginViewPropia(SuccessMessageMixin, LoginView):
     success_message = 'Has ingresado correctamente'
 
+    
+
 
 def logout(req):
     return render(req, 'logout.html')
@@ -92,3 +96,23 @@ def agregar_usuario(req):
     nuevo_usuario = req.POST['usuario']
     usuarios.append(nuevo_usuario)
     return redirect('/')
+
+
+def register(req):
+    form = RegisterForm()
+    context = {'form': form}
+    if req.method == 'GET':
+        return render(req, 'registration/register.html', context)
+    
+    # En caso de post se manda de vuelta
+    form = RegisterForm(req.POST)
+    if form.is_valid():
+        data = form.cleaned_data
+        if data['password'] != data['password2']:
+            messages.warning(req, 'La contraseña es diferente')
+            return redirect('/accounts/register/')
+        
+        User.objects.create_user(data['username'], data['password'])
+        messages.success(req, 'El usuario ha sido creado con exito.')
+    return redirect('/')
+

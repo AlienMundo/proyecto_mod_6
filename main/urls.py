@@ -7,5 +7,6 @@ urlpatterns = [
     path('contacto/', contact),
     path('bienvenido/', welcome),
     path('contact_form', contact_form),
-    path('success/', success)
+    path('success/', success),
+
 ]
