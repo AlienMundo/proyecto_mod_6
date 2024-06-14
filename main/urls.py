@@ -1,5 +1,5 @@
 from django.urls import path
-from main.views import failure, index, about, success, welcome, contact_form, contact
+from main.views import failure, index, about, success, welcome, contact_form, contact, logout, register
 
 urlpatterns = [
     path('', index),

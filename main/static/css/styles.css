@@ -10,7 +10,20 @@
   max-height: 350px;
 }
 
-/** Formulario **/
+nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.saludo-user {
+  font-size: large;
+}
+
+/* .alerta-login {
+
+} */
+
+/** Formulario Contacto**/
 
 #form_cliente {
   width: 80%;
@@ -21,4 +34,13 @@
 
 #form_cliente input {
   margin-bottom: 0.8rem;
+}
+
+/** Formulario Login**/
+.form-login {
+  width: 80%;
+  margin: 1rem auto;
+  padding: 0.2rem;
+  text-align: center;
+
 }

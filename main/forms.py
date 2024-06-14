@@ -15,3 +15,5 @@ class ContactForm(forms.Form):
     widget=forms.Textarea(attrs={'class':'form-control', 'placeholder': 'Mensaje'}),
 
   )
+
+

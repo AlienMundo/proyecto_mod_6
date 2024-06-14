@@ -5,6 +5,10 @@ from main.flanes import flanes
 from main.forms import ContactForm
 from main.models import Cliente, Flan
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView
+
 # Create your views here.
 
 def index(req):
@@ -18,6 +22,7 @@ def index(req):
 def about(req):
     return render(req, 'about.html')
 
+@login_required #Esto evita que puedan entrar a la pagina "welcome"sin haberse logeado antes
 def welcome(req):
     # Debe mostrar solo los flanes privados de la base de datos
     flanes_privados = Flan.objects.filter(is_private=True)
@@ -70,3 +75,20 @@ def success(req):
 
 def failure(req):
     return render(req, 'failure.html')
+
+# Sobreescribimos la viesta del login
+class LoginViewPropia(SuccessMessageMixin, LoginView):
+    success_message = 'Has ingresado correctamente'
+
+
+def logout(req):
+    return render(req, 'logout.html')
+
+def register(req):
+    return render(req, 'register.html')
+
+usuarios = []
+def agregar_usuario(req):
+    nuevo_usuario = req.POST['usuario']
+    usuarios.append(nuevo_usuario)
+    return redirect('/')

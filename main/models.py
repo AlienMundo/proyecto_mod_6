@@ -14,3 +14,6 @@ class Flan(models.Model):
   precio = models.IntegerField()
   imagen_url = models.URLField()
   is_private =  models.BooleanField(default=False)
+
+  def __str__(self) -> str:
+    return self.nombre
