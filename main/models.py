@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.utils.text import slugify
 
 # Create your models here.
 class Cliente(models.Model):
@@ -17,4 +18,6 @@ class Flan(models.Model):
 
   def __str__(self) -> str:
     return self.nombre
+  
+
 

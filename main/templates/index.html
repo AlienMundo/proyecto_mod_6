@@ -16,7 +16,7 @@
                 <h5 class="card-title fw-bold">
                   {{flan.nombre}}
                 </h5>
-                <p class="card-text">{{flan.descripcion}}</p>
+                <!-- <p class="card-text">{{flan.descripcion}}</p> -->
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}</li>
@@ -24,6 +24,9 @@
               <div class="card-body">
                 <a href="#" class="card-link link-underline link-underline-opacity-0">Pedir</a>
                 <a href="#" class="card-link link-underline link-underline-opacity-0">Comprar</a>
+                <!-- <button class="btn btn-secondary ms-2" type="button" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover">Detalle</button> -->
+                <a tabindex="0" class="card-link link-underline link-underline-opacity-0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-title="Descripción" data-bs-content="{{flan.descripcion}}" data-bs-placement="top" data-bs-content="Top popover"         data-bs-custom-class="custom-popover"
+                >Detalle</a>
               </div>
             </div>
         </div>

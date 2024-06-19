@@ -33,6 +33,9 @@ def welcome(req):
     }
     return render(req, 'welcome.html', context)
 
+
+
+
 def contact(req):
     if req.method == 'GET':
         # Renderizamos la pagina
@@ -79,10 +82,9 @@ def failure(req):
     return render(req, 'failure.html')
 
 # Sobreescribimos la viesta del login
-class LoginViewPropia(SuccessMessageMixin, LoginView):
+class LoginViewPropia(SuccessMessageMixin, LoginView, forms.Form):
     success_message = 'Has ingresado correctamente'
 
-    
 
 
 def logout(req):
@@ -115,4 +117,5 @@ def register(req):
         User.objects.create_user(data['username'], data['password'])
         messages.success(req, 'El usuario ha sido creado con exito.')
     return redirect('/')
+
 

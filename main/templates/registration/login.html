@@ -7,7 +7,10 @@
   <form class="my-5 form-login" action="{% url 'login' %}" method="post">
 
     {% csrf_token %}
-    {{form}}
+    <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+    {{ form.username }}
+    <label for="exampleInputPassword1" class="form-label">Contraseña:</label>
+    {{ form.password }}
 
     <!-- <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Nombre</label>
@@ -19,6 +22,7 @@
     </div>
     <div class="mb-3 form-check">
     </div> -->
+    
     <div class="d-grid gap-2 d-md-flex justify-content-end">
       <button type="submit" class="btn btn-info text-light px-4 py-2 mt-3">Login</button>
     </div>
