@@ -10,13 +10,13 @@
 
       {% for flan in flanes %}
         <div class="col-12 col-md-6 my-4">
-            <div class="card">
+            <div class="card ">
               <img src="{{flan.imagen_url}}" class="card-img-top img_flanes" alt="{{flan.nombre}}">
               <div class="card-body">
-                <h5 class="card-title fw-bold">
+                <h5 class="card-title fw-bold ">
                   {{flan.nombre}}
                 </h5>
-                <p class="card-text">{{flan.descripcion}}</p>
+                <!-- <p class="card-text">{{flan.descripcion}}</p> -->
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item fw-semibold fst-italic">${{flan.precio}}

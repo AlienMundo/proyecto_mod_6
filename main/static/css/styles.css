@@ -82,6 +82,10 @@ nav a {
   z-index: 3;
 }
 
+.card:hover .card-title {
+  color: #767CD2; 
+}
+
 
 
 /** custom popover **/
